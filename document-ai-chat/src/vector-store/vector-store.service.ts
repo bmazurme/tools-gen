@@ -1,4 +1,3 @@
-// src/vector-store/vector-store.service.ts
 import { Injectable, Logger } from '@nestjs/common';
 import axios from 'axios';
 import { ChromaClient, Collection } from 'chromadb';
@@ -169,7 +168,7 @@ export class VectorStoreService {
       console.log('Расстояния сходства:', distances);
 
       // Повышаем порог до 0.5 — только умеренно релевантные результаты
-      const minSimilarity = 0.25;
+      const minSimilarity = 0.2;
       const validIndices = distances
         .map((d, i) => (d >= minSimilarity ? i : -1))
         .filter((i) => i !== -1);
