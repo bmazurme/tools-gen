@@ -9,3 +9,22 @@ services:
       - ./chroma-data:/chromadb/data
     environment:
       - CHROMA_SERVER_HTTP_PORT=8001
+
+  llama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11434
+      - OLLAMA_MAX_LOADED_MODELS=2
+      - OLLAMA_NUM_PARALLEL=2
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
