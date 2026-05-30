@@ -12,7 +12,7 @@ import { AskQuestionDto } from './dto/ask-question.dto';
 import { CreateChatSessionDto } from './dto/create-chat-session.dto';
 import { ChatSession } from './entities/chat-session.entity';
 
-@Controller('chat')
+@Controller('api/chat')
 export class ChatsController {
   constructor(private readonly chatsService: ChatsService) {}
 
